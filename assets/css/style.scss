@@ -10,5 +10,6 @@ section { width: 640px; }
 footer  { width: 210px; }
 
 a:hover, a:focus {
- font-weight:normal
+    font-weight:normal
+    text-decoration: underline;
 }
