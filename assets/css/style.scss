@@ -3,13 +3,17 @@
 
 @import "{{ site.theme }}";
 
-header  { width: 210px; }
+.wrapper { width: 960px; }
 
-section { width: 640px; }
+header  { width: 220px; }
 
-footer  { width: 210px; }
+section { width: 720px; }
+
+footer  { width: 220px; }
 
 a:hover, a:focus {
     font-weight: normal;
     text-decoration: underline;
 }
+
+pre, code { font-size: 13px; }
