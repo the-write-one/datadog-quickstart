@@ -12,7 +12,7 @@ section { width: 720px; }
 footer  { width: 220px; }
 
 a:hover, a:focus {
-    font-weight: normal;
+    font-weight: inherit;
     text-decoration: underline;
 }
 
