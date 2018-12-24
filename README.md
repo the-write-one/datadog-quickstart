@@ -8,10 +8,10 @@ If you want to learn more about [Datadog](http://datadog.com) you are in the rig
 You can utilize any OS/host that you would like to follow the steps and procedures.
 However, we recommend one of the following approaches:
 
-* You can spin up a fresh linux VM via Vagrant or other tools so that you donΓÇÖt run into any OS or dependency issues. [Here are instructions](https://github.com/jeremy-lq/hiring-engineers/blob/tech-writer/README.md#vagrant) for setting up a Vagrant Ubuntu 12.04 VM.
+* You can spin up a fresh linux VM via Vagrant or other tools so that you don’t run into any OS or dependency issues. [Here are instructions](https://github.com/jeremy-lq/hiring-engineers/blob/tech-writer/README.md#vagrant) for setting up a Vagrant Ubuntu 12.04 VM.
 * You can utilize a Containerized approach with Docker for Linux and our dockerized Datadog Agent image.
 
-Then, sign up for Datadog (use ΓÇ£Datadog Recruiting CandidateΓÇ¥ in the ΓÇ£CompanyΓÇ¥ field), get the Agent reporting metrics from your local machine.
+Then, sign up for Datadog (use “Datadog Recruiting Candidate” in the “Company” field), get the Agent reporting metrics from your local machine.
 
 ## Quick Start Guide
 
