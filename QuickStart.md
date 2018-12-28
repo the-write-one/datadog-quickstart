@@ -241,9 +241,9 @@ select * from cats;
 
 ![MySql Metrics](040_MySql_done.png)
 
-### Custom Agent check that submits a specifc random metric
+### Custom Agent "check" that submits a specifc random metric
 
-1. We create Python code for the Agent check
+1. We create Python code for the Agent "check"
 
 `/etc/datadog-agent/checks.d/my_check.py`:
 ```
@@ -316,7 +316,7 @@ and in the Hosts view:
 
 5. We change our "check"'s collection interval so that it only submits the metric once every 45 seconds.
 
-**Bonus Feature:** Change the collection interval without modifying the Python check file you created?
+**Bonus Feature:** Change the collection interval without modifying the Python "check" file you created?
 
 `/etc/datadog-agent/conf.d/my_check.yaml`:
 ```
