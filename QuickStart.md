@@ -25,19 +25,19 @@ The folder where Vagrant is installed is `C:\VM\Vagrant`
 The VM manager software VirtualBox is installed
 following instructions at [Download VirtualBox](https://www.virtualbox.org/wiki/Downloads).
 
-3. Rebooting is required to apply changes from previous installations.
+3. Rebooting the host machine is required to apply changes from previous installations.
 
 4. Spin-up default VM
 
-First we created an instance of our VM using the Vagrant template `hashicorp/precise64`, which is Ubuntu 64 12.X LTS.
+First, we create an instance of our VM using the Vagrant template `hashicorp/precise64`, which is Ubuntu 64 12.X LTS.
 ```
     > md c:\VM\test
     > cd c:\VM\test
     > vagrant init 
 ```
 
-Observing the allocated resources in the VirtualBox Manager,
-in order to prevent slow down or other performance issues affecting our tests,
+You can view allocated resources in the VirtualBox Manager.
+In order to prevent performance and related issues during our testing,
 the memory is increased in `c:\VM\test\Vagrantfile`:
 ```
       config.vm.provider "virtualbox" do |vb|
@@ -45,22 +45,22 @@ the memory is increased in `c:\VM\test\Vagrantfile`:
       end
 ```
 
-Next we start and connect to the shell of our VM
+Next we can start the VM, and connect to it using SSH (the secure shell)
 ```
     > vagrant up
 
     > vargant ssh
 ```
 
-Note: The default username `vagrant / vagrant` is used by SSH session,
-and no password is required, since the authentication is performed
+Note: The default username `vagrant / vagrant` is used by SSH session.
+The password is not requested, since the authentication is performed
 using the locally stored encrypted key.
 
 5. Linux environment update
 
-Before proceeding, we update the command-line installation management
-for the Linux environment and make sure we have the necessary tools,
-such as `curl`.
+Lastly, we need to update the command-line installation management tools
+for the Linux environment. To make sure we can download the necessary tools,
+we also need to install `curl`.
 ```
     $ sudo apt-get update
     $ sudo apt-get install curl
@@ -115,20 +115,20 @@ The after stopping the agent, we verify a successful start again:
         /opt/datadog-agent/embedded/bin/trace-agent --config /etc/datadog-agent/datadog.yaml --pid /opt/datadog-agent/run/trace-agent.pid
 ```
 
-We also note the location of the logs if there are errors and for future reference:
+We also note the location of the logs, in case there are errors and for future reference:
 ```
     /var/log/datadog/agent.log
 ```
 
 ### Restarting the Agent
 
-Restarting is necessary when when editing the main configuration file and that of the Agent:
+Restarting is necessary when editing the main configuration file and that of the Agent:
 
  * `/etc/datadog-agent/datadog.yaml`
  * `/etc/datadog-agent/conf.d/mysql.d/conf.yaml`
  * etc
 
-To perform a restart,
+To perform a restart:
 ```
     $ sudo service datadog-agent restart
         ... process 16581
@@ -174,13 +174,13 @@ Provide `tags` section:
     $ sudo apt-get install mysql-server
         root user: no passowrd
 ```
-Note: mysql_secure_installation is not executed for the purposes of this excercise.
+Note: `mysql_secure_installation` is not executed within the scope of this procedure.
 
 2. Sample MySQL database
 
-We are using instructions under [Connecting to the MySQL Server with the mysql Client](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-connecting).
+We use instructions under [Connecting to the MySQL Server with the mysql Client](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-connecting).
 
-The following commands were used to establish a sample instance and execute typical session:
+The following commands are used to establish a sample instance and execute typical session:
 ```
     $ mysql -u root
     > create database pets;
@@ -197,9 +197,9 @@ The following commands were used to establish a sample instance and execute typi
 
 3. Install Datadog Agent in MySQL
 
-Using instructions under [MySQL integration](https://app.datadoghq.com/account/settings#integrations/mysql)
+We use instructions under [MySQL integration](https://app.datadoghq.com/account/settings#integrations/mysql).
 
-Configure the Agent to connect to MySQL
+We configure the Agent to connect to MySQL
 ```
     $ sudo cp /etc/datadog-agent/conf.d/mysql.d/conf.yaml.example /etc/datadog-agent/conf.d/mysql.d/conf.yaml
     $ sudo vi /etc/datadog-agent/conf.d/mysql.d/conf.yaml
@@ -220,16 +220,16 @@ conf.yaml:
               galera_cluster: 1
 ```
 
-Restart Agent (see [above](#restart-agent))
+Next, we restart Agent (see [above](#restart-agent))
 
 4. Sample MySQL sessions
 
-Make more connections from the Linux shell using:
+We can make more connections from the Linux shell using:
 ```
     $ mysql -u root
 ```
 
-Execute sample session to generate metrics:
+Then we execute a sample session to generate metrics:
 ```
 show databases;
 use pets;
@@ -243,7 +243,7 @@ select * from cats;
 
 ### Custom Agent check that submits a specifc random metric
 
-1. Create Python code for the Agent check
+1. We create Python code for the Agent check
 
 `/etc/datadog-agent/checks.d/my_check.py`:
 ```
@@ -255,7 +255,7 @@ select * from cats;
             def check(self, instance):
                 self.gauge('my_metric', randint(0, 1000))
 ```
-2. Create check configuration file:
+2. We create a "check" configuration file:
 
 `/etc/datadog-agent/conf.d/my_check.yaml`:
 ```
@@ -265,9 +265,9 @@ select * from cats;
             [{}]
 ```
 
-3. Restart Agent (see [above](#restart-agent))
+3. We restart the Agent (see [above](#restart-agent))
 
-4. Verify the custom check:
+4. Then we verify the custom "check":
 ```
     $ sudo datadog-agent check my_check
 
@@ -309,12 +309,12 @@ The resulting metric is available in [Metrics Explorer](https://app.datadoghq.co
 
 ![Check Metric](050_Check_Metric.png)
 
-and in Hosts view:
+and in the Hosts view:
 
 ![Check Metric in Hosts](060_Check_Metric_Host.png)
 
 
-5. Change your check's collection interval so that it only submits the metric once every 45 seconds.
+5. We change our "check"'s collection interval so that it only submits the metric once every 45 seconds.
 
 **Bonus Feature:** Change the collection interval without modifying the Python check file you created?
 
@@ -326,9 +326,9 @@ and in Hosts view:
             - min_collection_interval: 45
 ```
 
-5. Restart Agent (see [above](#restart-agent))
+5. Next, we restart the Agent (see [above](#restart-agent))
 
-6. Show Dashboard with time change from 15 seconds to 45 seconds.
+6. Here we show the Dashboard with the time changed from 15 seconds to 45 seconds.
 
 ![Check Metric 45s](070_Check_Metric_45s.png)
 
@@ -336,18 +336,18 @@ and in Hosts view:
 
 ### Utilize the Datadog API to create a Timeboard
 
-Get API_KEY and APP_KEY using [Integrations / API Keys](https://app.datadoghq.com/account/settings#api)
+We get the API_KEY and APP_KEY using [Integrations / API Keys](https://app.datadoghq.com/account/settings#api)
 
-1. Install Datadog API on local machine:
+1. We install the Datadog API on local machine:
 ```
     > pip install datadog
 ```
 
-2. Create python shell script:
+2. We create a Python shell script:
 
    View: [create_timeboard.py](create_timeboard.py)
 
-3. Capture snapshot in the [API Timeboard](https://app.datadoghq.com/dash/820500/api-timeboard?live=false&page=0&is_auto=false&from_ts=1527236026000&to_ts=1527236427416&tile_size=m) Dashboard:
+3. We capture a snapshot in the [API Timeboard](https://app.datadoghq.com/dash/820500/api-timeboard?live=false&page=0&is_auto=false&from_ts=1527236026000&to_ts=1527236427416&tile_size=m) Dashboard:
 
 ![API Timeboard 5m](090_API_Timeboard_5m.png)
 
