@@ -1,6 +1,6 @@
 Here are the steps for the Quick Start Guide for the Datadog product. 
 The detailed, easy-to-follow documentation found on the Datadog website, 
-combined with prior experience in related areas, were essential to 
+combined with prior experience in related areas, are essential for 
 completing the varied tasks presented in this guide.
 
 ## Prerequisites - Setting up the environment
