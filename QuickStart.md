@@ -27,7 +27,7 @@ following instructions at [Download VirtualBox](https://www.virtualbox.org/wiki/
 
 3. Rebooting the host machine is required to apply changes from previous installations.
 
-4. Spin-up default VM
+4. Spinning-up default VM
 
 First, we create an instance of our VM using the Vagrant template `hashicorp/precise64`, which is Ubuntu 64 12.X LTS.
 ```
@@ -56,7 +56,7 @@ Note: The default username `vagrant / vagrant` is used by SSH session.
 The password is not requested, since the authentication is performed
 using the locally stored encrypted key.
 
-5. Linux environment update
+5. Update the Linux environment
 
 Lastly, we need to update the command-line installation management tools
 for the Linux environment. To make sure we can download the necessary tools,
@@ -146,13 +146,13 @@ Reference locations:
 
 ### Show Custom Tags on the Host Map page
 
-1. Add tags in the Agent config file 
+1. We add the tags in the Agent config file 
 
-Edit configuration file:
+The configuration file to edit:
 ```
     $ sudo vi /etc/datadog-agent/datadog.yaml
 ```
-Provide `tags` section:
+We provide the `tags` section:
 ```
     tags:
       - my_user:the_write_one
@@ -160,15 +160,15 @@ Provide `tags` section:
       - my_role:tech_writer
 ```
 
-2. Restart Agent (see [above](#restart-agent))
+2. Next, we restart the Agent (see [above](#restart-agent))
 
-3. Show Host and its tags on the [Host Map](https://app.datadoghq.com/infrastructure/map) page in Datadog
+3. And we show the Host and its tags on the [Host Map](https://app.datadoghq.com/infrastructure/map) page in Datadog
 
 ![Tags in Hosts](030_Tags_done.png)
 
 ### Install a Datadog integration with a local database
 
-1. Install MySQL
+1. Installing MySQL
 ```
     $ sudo apt-get update
     $ sudo apt-get install mysql-server
@@ -176,7 +176,7 @@ Provide `tags` section:
 ```
 Note: `mysql_secure_installation` is not executed within the scope of this procedure.
 
-2. Sample MySQL database
+2. Creating a sample MySQL database
 
 We use instructions under [Connecting to the MySQL Server with the mysql Client](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-connecting).
 
@@ -195,7 +195,7 @@ The following commands are used to establish a sample instance and execute typic
     > SHOW CREATE TABLE cats\G
 ```
 
-3. Install Datadog Agent in MySQL
+3. Installing Datadog Agent in MySQL
 
 We use instructions under [MySQL integration](https://app.datadoghq.com/account/settings#integrations/mysql).
 
@@ -222,7 +222,7 @@ conf.yaml:
 
 Next, we restart Agent (see [above](#restart-agent))
 
-4. Sample MySQL sessions
+4. Executing sample MySQL sessions
 
 We can make more connections from the Linux shell using:
 ```
@@ -237,7 +237,7 @@ show tables;
 select * from cats;
 ```
 
-5. Show database metrics in [MySQL - Overview](https://app.datadoghq.com/dash/integration/12/mysql---overview?live=false&page=0&is_auto=false&from_ts=1527209956399&to_ts=1527242282882&tile_size=m) dashboard:
+5. Showing database metrics in [MySQL - Overview](https://app.datadoghq.com/dash/integration/12/mysql---overview?live=false&page=0&is_auto=false&from_ts=1527209956399&to_ts=1527242282882&tile_size=m) dashboard:
 
 ![MySql Metrics](040_MySql_done.png)
 
@@ -326,9 +326,9 @@ and in the Hosts view:
             - min_collection_interval: 45
 ```
 
-5. Next, we restart the Agent (see [above](#restart-agent))
+6. Next, we restart the Agent (see [above](#restart-agent))
 
-6. Here we show the Dashboard with the time changed from 15 seconds to 45 seconds.
+7. Here we show the Dashboard with the time changed from 15 seconds to 45 seconds.
 
 ![Check Metric 45s](070_Check_Metric_45s.png)
 
